@@ -80,6 +80,11 @@ $ pip uninstall flask
 ## Running the flask server
 Activating the flask server:
 ```
+$ py app.py # or wsgi.py, depending on what you've made
+```
+
+OR
+```
 $ flask run
 ```
 
