@@ -34,5 +34,7 @@ wtforms : library for making forms
 black : code formatter for Python
 
 ## Concepts to be aware of
+
 Sessions
+
 GET & POST requests
