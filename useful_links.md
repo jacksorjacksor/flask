@@ -14,3 +14,9 @@ https://learning.oreilly.com/library/view/flask-web-development/9781491991725/
 
 ## Essential SQLAlchemy book
 https://learning.oreilly.com/library/view/essential-sqlalchemy-2nd/9781491916544/
+
+# Web details
+## Font awesome - icons
+https://fontawesome.com/
+
+## Font awesome
