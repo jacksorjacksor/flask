@@ -127,6 +127,17 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
+## __init__.py
+
+This tends to always have the following:
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+```
+
 ## Misc
 __name__
 https://www.freecodecamp.org/news/whats-in-a-python-s-name-506262fe61e8/
