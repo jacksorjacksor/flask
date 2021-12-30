@@ -1,11 +1,11 @@
 # Technologies to be aware of
-Python
-Jinja2
-Flask
-Virtual Environments
-Git
-Databases
-Frontend languages (HTML/CSS/JS)
+Python : main language being used
+Flask : framework being used
+Jinja2 : templating language for .html files
+Virtual Environments : project-specific space to install all used apps into
+Databases : how data is stored to be used by the website
+Git : version control
+Frontend languages (HTML/CSS/JS) : end result and user interaction
 
 ## Libraries that are used
 flask : actual framework
@@ -16,8 +16,9 @@ datetime : used for timestamping database entries
 flask_wtf : flask version of WTForms
 wtforms : library for making forms
 
+## Optional libraries
+black : code formatter for Python
+
 ## Concepts to be aware of
 Sessions
-
-## Optional libraries
-black
+GET & POST requests
