@@ -3,13 +3,13 @@
 3. Literally no point in calling this "hello.py"
     - Extra confusion, just means you have to set/export FLASK_APP=hello - default is wsgi.py or app.py
 
-4. Don't use 
+4. Don't use:
 
 ```
 $ flask run
 ```
 
-Instead, run that base file directly:
+Instead, run the base file (named "hello.py" in 3.) directly:
 
 ```
 $ py hello.py # [ or wsgi.py or app.py - see my note above! ]
@@ -17,7 +17,7 @@ $ py hello.py # [ or wsgi.py or app.py - see my note above! ]
 
 Fun note! If you add debug=True to the app instantiation, and use the python to run the file instead of "flask run" (as above), you never need to set any environment variables (i.e. 4a and 4b)
 
-app.py
+hello.py
 ```python
 from flask import Flask
 
@@ -31,9 +31,9 @@ def hello():
 This can then be run with:
 
 ```
-$ py app.py
+$ py hello.py
 ```
 
-...and it'll be run in debug mode (which automatically tried to update when you make changes to your code).
+...and it'll be run in debug mode (which automatically tried to update when you make changes to your code). You don't need to set the variables at 4a or 4b, which you'd need to set EVERY TIME you load up VSCode.
 
 6. Title variable not used despite being defined in 7.
