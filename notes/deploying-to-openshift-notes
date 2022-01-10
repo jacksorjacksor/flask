@@ -1,0 +1,96 @@
+# Snippets for Ex 4
+
+Requirements:
+- GlobalProtect VPN activated (or do everything from uni Edurom network)
+- Flask project with requirements.txt file
+
+## Setting up the MySQL db
+- Create a MySQL account:
+[https://dbmanager.cs.cf.ac.uk/mysql/](https://dbmanager.cs.cf.ac.uk/mysql/)
+
+- Set a password (10 char, upper & lower & numbers, no special chars, not your uni pw)
+i.e. passW0rddd
+
+- Create a database:
+i.e. "my_flask_database"
+
+N.b. this actually prepends your {username_} to the name you give it
+i.e. the actual database name from the above input is "c0513538_my_flask_database"
+
+- DB interactions through phpMyAdmin
+[https://phpmyadmin.cs.cf.ac.uk](https://phpmyadmin.cs.cf.ac.uk)
+(Login with username and sql_password, i.e. c0513538 & passW0rddd)
+
+## Flask:
+Additional packages required (installed with ```$ pip install [package name]```):
+- pymysql   # package to enable database interaction
+- gunicorn  # package to allow web server interaction
+
+### wsgi.py / app.py
+Replace entire contents with:
+
+```python
+from name_of_app import app as application
+```
+
+### DB connection in __init__.py
+
+You need to setup the database URI to point to the new MySQL db
+
+Example:
+
+```python
+app.config[
+    "SQLALCHEMY_DATABASE_URI"
+] = "mysql+pymysql://c0513538:passW0rddd@csmysql.cs.cf.ac.uk:3306/c0513538_flask_1"
+```
+
+To make this you could use an f-string with the variables as below:
+
+```python
+username = "c0513538"
+sql_db_password = "passW0rddd"
+db_name = "my_flask_database"
+
+app_config_sql_db_uri = f"mysql+pymysql://{username}:{sql_db_password}@csmysql.cs.cf.ac.uk:3306/{username}_{db_name}"
+
+app.config["SQLALCHEMY_DATABASE_URI"] = app_config_sql_db_uri
+```
+
+### Update data via phpMyAdmin or script (i.e. db_maker.py)
+
+## Openshift
+[https://console.openshift.cs.cf.ac.uk/](https://console.openshift.cs.cf.ac.uk/)
+REMINDER: update your requirements file and make sure your Git repo is up-to-date
+
+### sshkey generation
+To allow OpenShift to access GitLab we need to make an sshkey pair to connect them. This is the same as we set-up for our own machines to access GitLab (see sheet 1).
+
+To generate an sshkey pair you need to use the below command:
+
+```bash
+ssh-keygen -t rsa -b 4096
+```
+
+n.b. naming the file puts it into the current working directory
+
+Public part (.pub) of the key goes to GitLab
+Private part of the key goes to OpenShift as a Secret
+
+Private key on GitLab
+https://git.cardiff.ac.uk/-/profile/keys
+
+OpenShift secret also requires:
+key: build.openshift.io/source-secret-match-uri-1
+value: ssh://git.cardiff.ac.uk/*
+
+## OpenShift Name
+Though you can start an OpenShift project name with a number you CANNOT start an OpenShift application name with a number. Please be aware of this as it has cost me many hours of my life!
+
+
+# Sources
+Exercise sheet 4 notes:
+[https://git.cardiff.ac.uk/scmne/flask-labs-worksheets](https://git.cardiff.ac.uk/scmne/flask-labs-worksheets)
+
+Openshift - getting started
+[https://docs.cs.cf.ac.uk/notes/openshift-getting-started/](https://docs.cs.cf.ac.uk/notes/openshift-getting-started/)
