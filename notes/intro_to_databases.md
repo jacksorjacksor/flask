@@ -1,11 +1,37 @@
 
-
 ## Setting up
+
+Requirements for your virtual environment
+```
+$ pip install flask-sqlalchemy
+```
+
 In __init__.py file:
 
 ```python
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///my_db_name.db"
+import os
+from flask_sqlalchemy import SQLAlchemy
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.path.join(basedir,'my_db.db')}"
 ```
+
+Creating a simple database
+(I use a file called db_maker.py placed in the root directory of the project - same directory as wsgi.py)
+
+```
+from name_of_my_app import db
+from name_of_my_app.models import Users # basically import all models required by the database 
+
+db.drop_all()
+db.create_all()
+
+user = User(name="testname") # let's assume that the only field required for a User is "name"
+
+db.session.add(user)
+db.session.commit()
+```
+
 
 ## Relationships
 ### 
