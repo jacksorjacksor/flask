@@ -17,9 +17,10 @@ app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.path.join(basedir,'my_db
 ```
 
 Creating a simple database
+
 (I use a file called db_maker.py placed in the root directory of the project - same directory as wsgi.py)
 
-```
+```python
 from name_of_my_app import db
 from name_of_my_app.models import Users # basically import all models required by the database 
 
