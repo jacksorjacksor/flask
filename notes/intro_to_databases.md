@@ -1,6 +1,11 @@
 
 
+## Setting up
+In __init__.py file:
 
+```python
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///my_db_name.db"
+```
 
 ## Relationships
 ### 
